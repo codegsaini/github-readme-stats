@@ -29,9 +29,13 @@
     "generate-langs-json": "node scripts/generate-langs-json",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky",
+    "prepare": "node -e \"if (process.env.NODE_ENV !== 'production'){process.exit(1)} \" || husky install",
     "lint": "npx eslint --max-warnings 0 \"./src/**/*.js\" \"./scripts/**/*.js\" \"./tests/**/*.js\" \"./api/**/*.js\" \"./themes/**/*.js\"",
-    "bench": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.bench.config.js"
+    "bench": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.bench.config.js",
+    "main": "node express.js",
+    "server": "node express.js",
+    "start": "node express.js",
+    "service": "node express.js"
   },
   "author": "Anurag Hazra",
   "license": "MIT",
@@ -64,6 +68,7 @@
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "emoji-name-map": "^1.2.8",
+    "express": "^4.19.2",
     "github-username-regex": "^1.0.0",
     "upgrade": "^1.1.0",
     "word-wrap": "^1.2.5"
